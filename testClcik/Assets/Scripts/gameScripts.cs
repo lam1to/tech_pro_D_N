@@ -6,8 +6,12 @@ using UnityEngine.UI;
 public class gameScripts : MonoBehaviour
 {
     public int click;
-    private int clickup = 1;
+    public int clickup = 1;
 
+    void Start()
+    {
+        PlayerPrefs.SetInt("clickup", clickup);
+    }
     //private bool check = true;
 
     public Text countClick;
@@ -22,24 +26,11 @@ public class gameScripts : MonoBehaviour
 
     public void OnClickButton()
     {
-        click += clickup;
+        PlayerPrefs.SetInt("scor",click + PlayerPrefs.GetInt("clickup"));
+        click = PlayerPrefs.GetInt("scor");
     }
-    /*
-    public void onClickUpgrade()
-    {
-        if(check == true)
-        {
-            upgrade.SetActive(true);
-            check = false;
-        }
-    }
-    */
-    public void OnclickBuyKeykaps()
-    {
-        if(click >= 10)
-        {
-            clickup *= 2;
-            click -= 10;
-        }
-    }
+
+
+
+   
 }
