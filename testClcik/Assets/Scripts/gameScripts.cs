@@ -7,27 +7,31 @@ public class gameScripts : MonoBehaviour
 {
     public int click;
     public int clickup = 1;
+    public Text countClick;
 
+    
     void Start()
     {
-        PlayerPrefs.SetInt("clickup", clickup);
+        if (PlayerPrefs.GetInt("first2") == 0)
+        {
+            PlayerPrefs.SetInt("first2", 1);
+            PlayerPrefs.SetInt("click", PlayerPrefs.GetInt("click"));
+        }
+        //PlayerPrefs.SetInt("clickup", clickup);
+        countClick.text = PlayerPrefs.GetInt("click") + " click";
     }
-    //private bool check = true;
-
-    public Text countClick;
-    //public GameObject upgrade;
 
 
     // Update is called once per frame
     void Update()
     {
-        countClick.text = click + " click";
+        countClick.text =  PlayerPrefs.GetInt("click") + " click";
     }
 
     public void OnClickButton()
     {
-        PlayerPrefs.SetInt("scor",click + PlayerPrefs.GetInt("clickup"));
-        click = PlayerPrefs.GetInt("scor");
+        PlayerPrefs.SetInt("scor", PlayerPrefs.GetInt("click") + PlayerPrefs.GetInt("clickup"));
+        PlayerPrefs.SetInt("click", PlayerPrefs.GetInt("scor"));
     }
 
 
