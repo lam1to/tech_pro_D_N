@@ -5,13 +5,16 @@ using UnityEngine.UI;
 
 public class gameScripts : MonoBehaviour
 {
-    public int click;
+    public int click = 0;
     public int clickup = 1;
     public Text countClick;
 
     
     void Start()
     {
+        //PlayerPrefs.SetInt("click", 0);
+        //PlayerPrefs.SetInt("scor", 0);
+        //PlayerPrefs.SetInt("clickup", 1);
         if (PlayerPrefs.GetInt("first2") == 0)
         {
             PlayerPrefs.SetInt("first2", 1);
